@@ -43,10 +43,18 @@ android {
 
 dependencies {
 
+    implementation project(':business')
+    implementation project(':data')
+
     implementation Libraries.kotlinCoreKtx
 
     implementation Libraries.hilt
     kapt Libraries.hiltCompiler
+
+    implementation Libraries.okHttpLogging
+    implementation Libraries.retrofit
+    implementation Libraries.retrofitGsonConverter
+    implementation Libraries.retrofitRxJava
 
     implementation Libraries.appcompat
     implementation Libraries.materialDesign

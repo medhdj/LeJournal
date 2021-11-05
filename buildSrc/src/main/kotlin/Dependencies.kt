@@ -10,7 +10,8 @@ object BuildPlugins {
     const val kotlinGradleDependency =
         "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     const val hiltGradleDependency = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}"
-    const val detektGradleDependency = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${Versions.detekt}"
+    const val detektGradleDependency =
+        "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${Versions.detekt}"
 }
 
 object AndroidSdk {
@@ -94,7 +95,6 @@ object Libraries {
     const val exoplayerDash = "com.google.android.exoplayer:exoplayer-dash:${Versions.exoplayer}"
 
 
-
     // utils
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 }
@@ -104,9 +104,12 @@ object TestLibraries {
         const val junit = "4.12"
         const val kluent = "1.68"
         const val mockk = "1.12.0"
+        const val fixture = "1.2.0"
     }
 
     const val junit = "junit:junit:${Versions.junit}"
-    const val mockk = "org.amshove.kluent:kluent:${Versions.kluent}"
-    const val kluent = "io.mockk:mockk:${Versions.mockk}"
+    const val kluent = "org.amshove.kluent:kluent:${Versions.kluent}"
+    const val mockk = "io.mockk:mockk:${Versions.mockk}"
+    const val fakeData = "com.appmattus.fixture:fixture:${Versions.fixture}"
+    const val kotlinJdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${BuildPlugins.Versions.kotlin}"
 }

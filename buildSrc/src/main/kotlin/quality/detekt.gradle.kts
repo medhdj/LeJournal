@@ -38,3 +38,8 @@ val runDetekt by tasks.registering(Detekt::class) {
         println("********* detekt analysis Finished *********")
     }
 }
+
+tasks.withType<Detekt>().configureEach {
+    // Target version of the generated JVM bytecode. It is used for type resolution.
+    this.jvmTarget = JavaVersion.VERSION_1_8.toString()
+}

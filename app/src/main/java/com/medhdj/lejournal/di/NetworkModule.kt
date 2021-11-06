@@ -1,7 +1,8 @@
 package com.medhdj.lejournal.di
 
+import com.medhdj.data.common.ApiKeyInterceptor
+import com.medhdj.data.common.TheGuardianApi
 import com.medhdj.lejournal.BuildConfig
-import com.medhdj.data.common.GuardianApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,7 +21,7 @@ class NetworkModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(GuardianApi.BASE_URL)
+            .baseUrl(TheGuardianApi.BASE_URL)
             .client(createOktthp())
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -29,8 +30,8 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideGuardianApi(retrofit: Retrofit): GuardianApi =
-        retrofit.create(GuardianApi::class.java)
+    fun provideGuardianApi(retrofit: Retrofit): TheGuardianApi =
+        retrofit.create(TheGuardianApi::class.java)
 
     private fun createOktthp(): OkHttpClient {
         return with(OkHttpClient.Builder()) {
@@ -38,6 +39,7 @@ class NetworkModule {
                 addInterceptor(HttpLoggingInterceptor().apply {
                     level = HttpLoggingInterceptor.Level.BODY
                 })
+                addInterceptor(ApiKeyInterceptor())
             }
 
             build()

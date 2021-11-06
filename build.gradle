@@ -16,6 +16,13 @@ plugins {
 }
 
 allprojects {
+    ext {
+        getEnvironmentVariable = { variableName, defaultValue ->
+            def variableValue = System.getenv(variableName)
+            return variableValue != null ? variableValue : defaultValue
+        }
+    }
+
     repositories {
         google()
         mavenCentral()

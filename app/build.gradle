@@ -26,10 +26,11 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = '1.8'
     }
     buildFeatures {
         dataBinding = true
+        viewBinding true
     }
 
     buildTypes {
@@ -43,6 +44,7 @@ android {
 
 dependencies {
 
+    implementation project(':core')
     implementation project(':business')
     implementation project(':data')
 
@@ -58,6 +60,11 @@ dependencies {
 
     implementation Libraries.appcompat
     implementation Libraries.materialDesign
+    implementation Libraries.constraintLayout
+    implementation Libraries.navigationFragmentKtx
+    implementation Libraries.navigationUiKtx
+    implementation Libraries.paging
+    implementation Libraries.pagingRx
 
     implementation Libraries.timber
 }

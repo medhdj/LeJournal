@@ -11,6 +11,8 @@ dependencies {
     implementation Libraries.rxJava
     implementation Libraries.rxKotlin
 
+    implementation Libraries.pagingCommon
+
     testImplementation TestLibraries.junit
     testImplementation TestLibraries.mockk
 }

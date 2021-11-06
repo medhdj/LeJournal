@@ -1,27 +1,31 @@
 package com.medhdj.data.articles
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.rxjava2.flowable
 import com.medhdj.business.articles.Article
 import com.medhdj.business.articles.ArticlesFeedRepository
-import com.medhdj.data.common.GuardianApi
-import com.medhdj.data.common.SearchableEndpoint
-import io.reactivex.Observable
+import io.reactivex.Flowable
 
 class ArticlesFeedRepositoryImpl(
-    private val guardianApi: GuardianApi
+    private val articlesFeedDataSource: ArticlesFeedDataSource
 ) : ArticlesFeedRepository {
     override fun getArticles(
         withContent: String,
-        loadSize: Int,
-        page: Int
-    ): Observable<List<Article>> =
-        guardianApi.search<ArticleEntity>(
-            endpoint = SearchableEndpoint.CONTENT_ENDPOINT,
-            withContent = withContent,
-            pageSize = loadSize,
-            extraInformation = mapOf(
-                "show-fields" to "headline,thumbnail"
-            )
-        ).map {
-            it.toArticles()
-        }
+        pageSize: Int
+    ): Flowable<PagingData<Article>> =
+        Pager(
+            config = PagingConfig(
+                pageSize = DEFAULT_PAGE_SIZE,
+                prefetchDistance = 5,
+                initialLoadSize = DEFAULT_PAGE_SIZE * 2,
+                maxSize = 60
+            ),
+            pagingSourceFactory = {
+                articlesFeedDataSource.updateContentToSearch(newContent = withContent)
+            }
+        ).flowable
 }
+
+const val DEFAULT_PAGE_SIZE = 50

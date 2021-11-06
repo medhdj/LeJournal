@@ -39,6 +39,7 @@ object Libraries {
 
         const val retrofit = "2.9.0"
         const val okhttp = "4.7.2"
+        const val gson = "2.8.5"
 
         const val appCompat = "1.3.1"
         const val materialDesign = "1.4.0"
@@ -46,12 +47,12 @@ object Libraries {
         const val navigation = "2.3.5"
         const val lifeCycle = "2.3.1"
         const val fragmentKtx = "1.3.6"
+        const val paging = "3.0.1"
 
         const val exoplayer = "2.15.1"
 
         const val timber = "4.7.1"
     }
-
 
     // Kotlin
     const val kotlinCoreKtx = "androidx.core:core-ktx:${Versions.kotlinKtx}"
@@ -65,19 +66,11 @@ object Libraries {
     const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
     const val hiltCompiler = "com.google.dagger:hilt-compiler:${Versions.hilt}"
 
-    const val constraintLayout =
-        "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
-
-    const val navigationFragmentKtx =
-        "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
-    const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
-
     // Network
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitRxJava = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
     const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
-
-
+    const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
     const val okHttpMockServer = "com.squareup.okhttp3:mockwebserver:${Versions.okhttp}"
     const val okHttpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
@@ -88,6 +81,15 @@ object Libraries {
     const val liveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifeCycle}"
     const val lifeCycleCommon = "androidx.lifecycle:lifecycle-common-java8:${Versions.lifeCycle}"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
+    const val constraintLayout =
+        "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    const val navigationFragmentKtx =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+
+    const val paging = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
+    const val pagingRx = "androidx.paging:paging-rxjava2:${Versions.paging}"
+    const val pagingCommon = "androidx.paging:paging-common:${Versions.paging}"
 
     // Player
     const val exoplayerCore = "com.google.android.exoplayer:exoplayer-core:${Versions.exoplayer}"
@@ -104,12 +106,10 @@ object TestLibraries {
         const val junit = "4.12"
         const val kluent = "1.68"
         const val mockk = "1.12.0"
-        const val fixture = "1.2.0"
     }
 
     const val junit = "junit:junit:${Versions.junit}"
     const val kluent = "org.amshove.kluent:kluent:${Versions.kluent}"
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
-    const val fakeData = "com.appmattus.fixture:fixture:${Versions.fixture}"
     const val kotlinJdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${BuildPlugins.Versions.kotlin}"
 }

@@ -11,18 +11,18 @@ data class ArticleEntity(
 
 data class ArticleFields(
     val headline: String,
-    val thumbnailUrl: String,
+    val thumbnail: String,
     val body: String? = null
 )
 
 internal fun ArticleEntity.toArticle() = Article(
     id = id,
     headline = fields.headline,
-    thumbnailUrl = fields.thumbnailUrl,
+    thumbnailUrl = fields.thumbnail,
     body = fields.body
 )
 
-internal fun SearchResponse<ArticleEntity>.toArticles() =
-    results.map {
+internal fun List<ArticleEntity>.toArticles() =
+    map {
         it.toArticle()
     }

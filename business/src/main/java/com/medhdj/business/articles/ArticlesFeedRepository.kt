@@ -1,11 +1,11 @@
 package com.medhdj.business.articles
 
-import io.reactivex.Observable
+import androidx.paging.PagingData
+import io.reactivex.Flowable
 
 interface ArticlesFeedRepository {
     fun getArticles(
         withContent: String,
-        loadSize: Int,
-        page: Int
-    ): Observable<List<Article>>
+        pageSize: Int
+    ): Flowable<PagingData<Article>>
 }

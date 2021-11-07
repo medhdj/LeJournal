@@ -11,19 +11,18 @@ class ArticlesFeedDataSource(
     private val theGuardianApi: TheGuardianApi
 ) : RxPagingSource<Int, Article>() {
 
-    private var contentToSearch: String? = null
+    private lateinit var articleFeedQuery: ArticleFeedQuery
 
     override fun loadSingle(params: LoadParams<Int>): Single<LoadResult<Int, Article>> {
         val position = params.key ?: DEFAULT_PAGE_START_INDEX
 
         return theGuardianApi
             .searchArticles(
-                withContent = contentToSearch ?: "",
+                withContent = articleFeedQuery.contentToSearch,
                 pageSize = params.loadSize,
                 page = position,
-                extraInformation = mapOf(
-                    "show-fields" to EXTRA_ARTICLE_FIELDS
-                )
+                order = articleFeedQuery.order,
+                extraInformation = articleFeedQuery.extraInformation
             )
             .runAndObserveInBackground()
             .map<LoadResult<Int, Article>> {
@@ -40,9 +39,14 @@ class ArticlesFeedDataSource(
 
     override fun getRefreshKey(state: PagingState<Int, Article>): Int? = null
 
-    fun updateContentToSearch(newContent: String): ArticlesFeedDataSource {
-        contentToSearch = newContent
-        return this
+    data class ArticleFeedQuery(
+        val contentToSearch: String,
+        val order: String,
+        val extraInformation: Map<String, String> = emptyMap()
+    )
+
+    fun updateArticleFeedQuery(newContent: ArticleFeedQuery) {
+        articleFeedQuery = newContent
     }
 }
 

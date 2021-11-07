@@ -11,8 +11,9 @@ interface TheGuardianApi {
     @GET("/search")
     fun searchArticles(
         @Query("q") withContent: String,
-        @Query("pageSize") pageSize: Int,
+        @Query("page-size") pageSize: Int,
         @Query("page") page: Int,
+        @Query("order-by") order: String,
         @QueryMap extraInformation: Map<String, String>
     ): Single<SearchResponse<ArticleEntity>>
 

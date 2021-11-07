@@ -12,6 +12,10 @@ object BuildPlugins {
     const val hiltGradleDependency = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}"
     const val detektGradleDependency =
         "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${Versions.detekt}"
+    const val safeArgsGradleDependency =
+        "androidx.navigation:navigation-safe-args-gradle-plugin:${Libraries.Versions.navigation}"
+
+
 }
 
 object AndroidSdk {
@@ -28,7 +32,7 @@ object AndroidApplication {
 }
 
 object Libraries {
-    private object Versions {
+    internal object Versions {
         const val kotlinKtx = "1.6.0"
 
         const val rxJava = "2.2.2"
@@ -48,9 +52,9 @@ object Libraries {
         const val lifeCycle = "2.3.1"
         const val fragmentKtx = "1.3.6"
         const val paging = "3.0.1"
+        const val glide = "4.12.0"
 
-        const val exoplayer = "2.15.1"
-
+        const val jodaTime = "2.10.13"
         const val timber = "4.7.1"
     }
 
@@ -91,14 +95,11 @@ object Libraries {
     const val pagingRx = "androidx.paging:paging-rxjava2:${Versions.paging}"
     const val pagingCommon = "androidx.paging:paging-common:${Versions.paging}"
 
-    // Player
-    const val exoplayerCore = "com.google.android.exoplayer:exoplayer-core:${Versions.exoplayer}"
-    const val exoplayerUI = "com.google.android.exoplayer:exoplayer-ui:${Versions.exoplayer}"
-    const val exoplayerDash = "com.google.android.exoplayer:exoplayer-dash:${Versions.exoplayer}"
-
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
 
     // utils
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+    const val jodaTime = "joda-time:joda-time:${Versions.jodaTime}"
 }
 
 object TestLibraries {

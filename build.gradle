@@ -8,6 +8,7 @@ buildscript {
         classpath BuildPlugins.androidGradleDependency
         classpath BuildPlugins.kotlinGradleDependency
         classpath BuildPlugins.hiltGradleDependency
+        classpath BuildPlugins.safeArgsGradleDependency
     }
 }
 
@@ -33,12 +34,3 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-//dependencyResolutionManagement {
-//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-//    repositories {
-//        google()
-//        mavenCentral()
-//        jcenter() // Warning: this repository is going to shut down soon
-//    }
-//}

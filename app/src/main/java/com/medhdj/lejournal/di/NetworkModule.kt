@@ -37,7 +37,7 @@ class NetworkModule {
         return with(OkHttpClient.Builder()) {
             if (BuildConfig.DEBUG) {
                 addInterceptor(HttpLoggingInterceptor().apply {
-                    level = HttpLoggingInterceptor.Level.BODY
+                    level = HttpLoggingInterceptor.Level.HEADERS
                 })
                 addInterceptor(ApiKeyInterceptor())
             }

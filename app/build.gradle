@@ -3,6 +3,7 @@ plugins {
     id "kotlin-android"
     id "kotlin-kapt"
     id "dagger.hilt.android.plugin"
+    id "androidx.navigation.safeargs.kotlin"
 }
 
 android {
@@ -61,11 +62,13 @@ dependencies {
     implementation Libraries.appcompat
     implementation Libraries.materialDesign
     implementation Libraries.constraintLayout
+    implementation Libraries.fragmentKtx
     implementation Libraries.navigationFragmentKtx
     implementation Libraries.navigationUiKtx
     implementation Libraries.paging
     implementation Libraries.pagingRx
 
+    implementation Libraries.jodaTime
     implementation Libraries.timber
 }
 

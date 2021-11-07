@@ -3,17 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/teal_700"
-    android:layout_height="60dp">
+    android:layout_height="wrap_content"
+    android:padding="@dimen/spacing_xs">
+
+    <ImageView
+        android:id="@+id/articleThumbnail"
+        android:layout_width="@dimen/spacing_xl"
+        android:layout_height="@dimen/spacing_xl"
+        android:adjustViewBounds="true"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/backgrounds/scenic"
+        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/headline"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_xs"
+        android:maxLines="2"
         android:textColor="@color/black"
+        android:textSize="@dimen/text_size_m"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/articleThumbnail"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="this is a headline this is a headline this is a headline this is a headline this is a headline this is a headline" />
+
+    <TextView
+        android:id="@+id/articlePublicationDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="aa" />
+        android:layout_marginTop="@dimen/spacing_xxs"
+        android:maxLines="2"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_m"
+        app:layout_constraintStart_toStartOf="@id/headline"
+        app:layout_constraintTop_toBottomOf="@id/headline"
+        tools:text="06/11/2021" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,8 +4,5 @@ import androidx.paging.PagingData
 import io.reactivex.Flowable
 
 interface ArticlesFeedRepository {
-    fun getArticles(
-        withContent: String,
-        pageSize: Int
-    ): Flowable<PagingData<Article>>
+    fun getArticles(withContent: String): Flowable<PagingData<Article>>
 }

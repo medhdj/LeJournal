@@ -11,10 +11,7 @@ import io.reactivex.Flowable
 class ArticlesFeedRepositoryImpl(
     private val articlesFeedDataSource: ArticlesFeedDataSource
 ) : ArticlesFeedRepository {
-    override fun getArticles(
-        withContent: String,
-        pageSize: Int
-    ): Flowable<PagingData<Article>> =
+    override fun getArticles(withContent: String): Flowable<PagingData<Article>> =
         Pager(
             config = PagingConfig(
                 pageSize = DEFAULT_PAGE_SIZE,
@@ -23,9 +20,19 @@ class ArticlesFeedRepositoryImpl(
                 maxSize = 60
             ),
             pagingSourceFactory = {
-                articlesFeedDataSource.updateContentToSearch(newContent = withContent)
+                articlesFeedDataSource.updateArticleFeedQuery(
+                    ArticlesFeedDataSource.ArticleFeedQuery(
+                        contentToSearch = withContent,
+                        order = DEFAULT_RESULT_ORDER,
+                        extraInformation = mapOf(
+                            "show-fields" to EXTRA_ARTICLE_FIELDS
+                        )
+                    )
+                )
+                articlesFeedDataSource
             }
         ).flowable
 }
 
-const val DEFAULT_PAGE_SIZE = 50
+private const val DEFAULT_PAGE_SIZE = 50
+private const val DEFAULT_RESULT_ORDER = "newest"

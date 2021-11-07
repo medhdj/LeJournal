@@ -1,4 +1,4 @@
-package com.medhdj.lejournal.features.articles
+package com.medhdj.lejournal.features.articles.feed
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,8 +7,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import androidx.paging.PagingData
+import androidx.paging.map
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.medhdj.lejournal.features.articles.ArticleUIModels
 
 class ArticlesFeedListView @JvmOverloads constructor(
     context: Context,
@@ -23,21 +25,22 @@ class ArticlesFeedListView @JvmOverloads constructor(
         initList()
     }
 
-    fun updateList(data: PagingData<ArticleUIModel>) {
+    fun updateList(data: PagingData<ArticleUIModels>) {
         listAdapter.submitData(lifecycle, data)
     }
-
 
     private fun initList() {
         layoutManager = LinearLayoutManager(context)
         adapter = listAdapter
     }
 
+    override fun getAdapter(): ArticlesFeedPagingAdapter = listAdapter
+
     override fun getLifecycle(): Lifecycle = lifecycleRegistry
 }
 
 @BindingAdapter("data")
-fun ArticlesFeedListView.bindData(data: PagingData<ArticleUIModel>?) {
+fun ArticlesFeedListView.bindData(data: PagingData<ArticleUIModels>?) {
     data?.let {
         updateList(data)
     }

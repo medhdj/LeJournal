@@ -20,7 +20,7 @@
     <color name="shadow_color">#C4787575</color>
 
     <!-- app custom UI -->
+    <color name="ic_launcher_background">#0F29B1</color>
     <color name="background_article_item">@color/white</color>
-
 
 </resources>

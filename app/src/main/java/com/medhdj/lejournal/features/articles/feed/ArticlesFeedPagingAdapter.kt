@@ -92,6 +92,7 @@ class ArticlesFeedPagingAdapter :
             applyCorrectBackground(previous, next, articleItemBinding)
         }
 
+        // better move this to an item decorator
         private fun applyCorrectBackground(
             previous: ArticleUIModels.ArticleItemUIModel?,
             next: ArticleUIModels.ArticleItemUIModel?,

@@ -76,7 +76,6 @@ object Libraries {
     const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
-    const val okHttpMockServer = "com.squareup.okhttp3:mockwebserver:${Versions.okhttp}"
     const val okHttpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
 
     // UI
@@ -112,5 +111,4 @@ object TestLibraries {
     const val junit = "junit:junit:${Versions.junit}"
     const val kluent = "org.amshove.kluent:kluent:${Versions.kluent}"
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
-    const val kotlinJdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${BuildPlugins.Versions.kotlin}"
 }

@@ -70,6 +70,14 @@ dependencies {
 
     implementation Libraries.jodaTime
     implementation Libraries.timber
+
+    testImplementation(testFixtures(project(":business")))
+
+    testImplementation TestLibraries.junit
+    testImplementation TestLibraries.mockk
+    testImplementation TestLibraries.kluent
+    testImplementation TestLibraries.archCoreTesting
+    testImplementation TestLibraries.rxAndroidTest
 }
 
 kapt {

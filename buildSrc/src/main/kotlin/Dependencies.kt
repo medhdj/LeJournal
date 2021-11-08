@@ -106,9 +106,12 @@ object TestLibraries {
         const val junit = "4.12"
         const val kluent = "1.68"
         const val mockk = "1.12.0"
+        const val core = "2.1.0"
     }
 
     const val junit = "junit:junit:${Versions.junit}"
     const val kluent = "org.amshove.kluent:kluent:${Versions.kluent}"
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
+    const val archCoreTesting = "androidx.arch.core:core-testing:${Versions.core}"
+    const val rxAndroidTest = Libraries.rxAndroid
 }

@@ -60,4 +60,5 @@ dependencies {
     implementation Libraries.jodaTime
 
     testImplementation TestLibraries.junit
+    testImplementation TestLibraries.kluent
 }

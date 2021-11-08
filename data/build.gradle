@@ -64,5 +64,5 @@ dependencies {
 
     testImplementation TestLibraries.junit
     testImplementation TestLibraries.mockk
-
+    testImplementation TestLibraries.kluent
 }

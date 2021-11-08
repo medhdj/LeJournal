@@ -1,6 +1,7 @@
 package com.medhdj.business
 
 import com.medhdj.business.articles.Article
+import java.util.Date
 
 object ArticleFixtures {
 
@@ -10,6 +11,7 @@ object ArticleFixtures {
         val id: String = "id",
         val headline: String = "headline",
         val thumbnailUrl: String = "url",
+        val publicationDate: Date = Date(),
         val body: String? = null,
         val main: String? = null
     ) {
@@ -17,6 +19,7 @@ object ArticleFixtures {
             id = id,
             headline = headline,
             thumbnailUrl = thumbnailUrl,
+            publicationDate = publicationDate,
             body = body,
             main = main
         )

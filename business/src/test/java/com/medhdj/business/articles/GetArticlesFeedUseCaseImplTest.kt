@@ -1,9 +1,8 @@
 package com.medhdj.business.articles
 
-import com.medhdj.business.ArticleFixtures
 import io.mockk.every
 import io.mockk.mockk
-import io.reactivex.Observable
+import io.reactivex.Flowable
 import org.junit.Test
 
 class GetArticlesFeedUseCaseImplTest {
@@ -14,32 +13,24 @@ class GetArticlesFeedUseCaseImplTest {
     @Test
     fun `test fetching data successfully`() {
         // given
-        val articles = ArticleFixtures.createArticlesList(size = 2)
-        every { tested.getArticles(any(), any(), any()) } returns Observable.just(articles)
+        every { tested.getArticles(any()) } returns mockk(relaxed = true)
 
         // when
-        val observer = tested.getArticles("test", 10, 2).test()
+        val observer = tested.getArticles("test").test()
 
         //then
         observer.assertComplete()
-        observer.assertValue {
-            it.size == articles.size
-        }
     }
 
     @Test
     fun `test fetching data with errors`() {
         // given
         every {
-            tested.getArticles(
-                any(),
-                any(),
-                any()
-            )
-        } returns Observable.error(Exception("some exception"))
+            tested.getArticles(any())
+        } returns Flowable.error(Exception("some exception"))
 
         // when
-        val observer = tested.getArticles("test", 10, 2).test()
+        val observer = tested.getArticles("test").test()
 
         //then
         observer.assertNotComplete()

@@ -1,4 +1,4 @@
-package com.medhdj.core
+package com.medhdj.lejournal.common
 
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.plugins.RxJavaPlugins

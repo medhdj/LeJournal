@@ -1,6 +1,6 @@
 package com.medhdj.data.articles
 
-import com.medhdj.data.common.ResponseData
+import com.medhdj.data.common.SearchData
 import com.medhdj.data.common.SearchResponse
 import com.medhdj.data.common.TheGuardianApi
 import io.mockk.every
@@ -61,7 +61,7 @@ class ArticlesFeedRepositoryImplTest {
             )
         } returns Observable.just(
             SearchResponse(
-                data = ResponseData(
+                data = SearchData(
                     pageSize = 1,
                     currentPage = 1,
                     totalPages = 10,

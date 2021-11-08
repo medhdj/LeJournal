@@ -17,6 +17,13 @@ sealed class ArticleUIModels {
         val articleAgeCategory: ArticleAgeCategoryEnum = ArticleAgeCategoryEnum.OLDER
     ) : ArticleUIModels()
 
+    data class ArticleUIModel(
+        val id: String,
+        val headline: String,
+        val thumbnailUrl: String,
+        val body: String
+    ) : ArticleUIModels()
+
     data class SectionHeaderUIModel(@StringRes val titleResId: Int) : ArticleUIModels()
 }
 
@@ -33,6 +40,14 @@ internal fun Article.toArticleItemUIModel(): ArticleUIModels =
         thumbnailUrl = thumbnailUrl,
         publicationDate = publicationDate.asString(),
         articleAgeCategory = determineArticleAge(this)
+    )
+
+internal fun Article.toArticleUIModel(): ArticleUIModels.ArticleUIModel =
+    ArticleUIModels.ArticleUIModel(
+        id = id,
+        headline = headline,
+        thumbnailUrl = thumbnailUrl,
+        body = body!!
     )
 
 private fun determineArticleAge(article: Article): ArticleAgeCategoryEnum {

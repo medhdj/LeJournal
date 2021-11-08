@@ -23,7 +23,28 @@ fun <T, ERROR, DATA> Flowable<T>.startWithLoadingFromWorkerThread(liveData: Muta
         liveData.postValue(Response.Loading)
     }
 
+fun <T, ERROR, DATA> Single<T>.startWithLoadingFromWorkerThread(liveData: MutableLiveData<Response<ERROR, DATA>>): Single<T> =
+    doOnSubscribe {
+        liveData.postValue(Response.Loading)
+    }
+
 fun <T, ERROR, DATA> Flowable<T>.mapAndConvertToLiveDataInBackground(
+    successHandler: (T) -> DATA,
+    errorHandler: (Throwable) -> ERROR,
+    liveData: MutableLiveData<Response<ERROR, DATA>>
+): Disposable = this
+    .runAndObserveInBackground()
+    .startWithLoadingFromWorkerThread(liveData)
+    .subscribe(
+        { data ->
+            liveData.postValue(Response.Success(successHandler(data)))
+        },
+        { throwable ->
+            liveData.postValue(Response.Failure(errorHandler(throwable)))
+        }
+    )
+
+fun <T, ERROR, DATA> Single<T>.mapAndConvertToLiveDataInBackground(
     successHandler: (T) -> DATA,
     errorHandler: (Throwable) -> ERROR,
     liveData: MutableLiveData<Response<ERROR, DATA>>

@@ -51,4 +51,3 @@ class ArticlesFeedDataSource(
 }
 
 const val DEFAULT_PAGE_START_INDEX = 1
-const val EXTRA_ARTICLE_FIELDS = "headline,thumbnail"

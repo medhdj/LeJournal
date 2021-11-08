@@ -14,7 +14,7 @@ import com.medhdj.lejournal.features.articles.ArticleUIModels
 class ArticlesFeedPagingAdapter :
     PagingDataAdapter<ArticleUIModels, RecyclerView.ViewHolder>(COMPARATOR) {
 
-    var onItemClickListener: ((ArticleUIModels) -> Unit)? = null
+    var onItemClickListener: ((ArticleUIModels.ArticleItemUIModel) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
@@ -75,7 +75,7 @@ class ArticlesFeedPagingAdapter :
                     ArticleUIModels.ArticleItemUIModel?,
                     ArticleUIModels.ArticleItemUIModel,
                     ArticleUIModels.ArticleItemUIModel?>,
-            onItemClickListener: ((ArticleUIModels) -> Unit)?
+            onItemClickListener: ((ArticleUIModels.ArticleItemUIModel) -> Unit)?
         ) = with(articleItemBinding) {
             val (previous, current, next) = items
             articleThumbnail.setImage(
@@ -83,7 +83,7 @@ class ArticlesFeedPagingAdapter :
                 circleCrop = true
             )
 
-            headline.text = current.id
+            headline.text = current.headline
             articlePublicationDate.text = current.publicationDate
 
             itemView.setOnClickListener {

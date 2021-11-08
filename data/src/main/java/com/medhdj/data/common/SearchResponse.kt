@@ -4,11 +4,10 @@ import com.google.gson.annotations.SerializedName
 
 data class SearchResponse<T>(
     @SerializedName("response")
-    val data: ResponseData<T>
-
+    val data: SearchData<T>
 )
 
-data class ResponseData<T>(
+data class SearchData<T>(
     val pageSize: Int,
     val currentPage: Int,
     @SerializedName("pages")

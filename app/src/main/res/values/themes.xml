@@ -23,5 +23,9 @@
 
     <style name="Theme.LeJournal.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
+    <style name="Theme.LeJournal.Toolbar.Transparent" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
     <style name="Theme.LeJournal.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

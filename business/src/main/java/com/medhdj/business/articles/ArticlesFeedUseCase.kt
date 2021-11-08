@@ -13,5 +13,3 @@ class GetArticlesFeedUseCaseImpl(
     override fun getArticles(withContent: String): Flowable<PagingData<Article>> =
         articlesFeedRepository.getArticles(withContent = withContent)
 }
-
-const val DEFAULT_PAGE_SIZE = 50

@@ -36,3 +36,4 @@ class ArticlesFeedRepositoryImpl(
 
 private const val DEFAULT_PAGE_SIZE = 50
 private const val DEFAULT_RESULT_ORDER = "newest"
+private const val EXTRA_ARTICLE_FIELDS = "headline,thumbnail"

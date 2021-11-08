@@ -12,15 +12,14 @@
 
         <action
             android:id="@+id/action_go_to_details"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/ArticleDetailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.medhdj.lejournal.features.main.SecondFragment"
-        tools:layout="@layout/fragment_second">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/articleFeedFragment" />
+        android:id="@+id/ArticleDetailsFragment"
+        android:name="com.medhdj.lejournal.features.articles.details.ArticleDetailsFragment"
+        tools:layout="@layout/fragment_article_details">
+        <argument
+            android:name="articleId"
+            app:argType="string" />
     </fragment>
 </navigation>

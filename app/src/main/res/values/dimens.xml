@@ -18,8 +18,14 @@
     <dimen name="text_size_xxl">36sp</dimen>
 
 
-
     <!-- Shadow -->
     <dimen name="shadow_radius">4dp</dimen>
     <dimen name="shadow_width">1dp</dimen>
+
+    <item name="image_ratio_16_9" format="string" type="dimen">16:9</item>
+
+
+    <!-- Custom dimensions -->
+    <dimen name="article_details_appbar_height">270dp</dimen>
+
 </resources>

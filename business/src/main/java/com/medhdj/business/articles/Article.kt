@@ -9,5 +9,4 @@ data class Article(
     val publicationDate: Date,
     val main: String? = null,
     val body: String? = null
-
 )

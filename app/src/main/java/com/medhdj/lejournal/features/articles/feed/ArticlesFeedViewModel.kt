@@ -79,4 +79,4 @@ private fun PagingData<ArticleUIModels>.insertSectionHeaders() = with(this) {
         }
 }
 
-const val STATIC_SEARCH_CONTENT = "covid and football"
+const val STATIC_SEARCH_CONTENT = "football and covid"

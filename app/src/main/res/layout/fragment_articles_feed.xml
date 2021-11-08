@@ -25,6 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
+                app:titleTextAppearance="@style/TextAppearance.LeJournal.Toolbar.TitleText"
                 app:popupTheme="@style/Theme.LeJournal.PopupOverlay" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -49,7 +50,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ProgressBar
-                style="@style/LeJournal.ProgressBar"
+                style="@style/Styles.LeJournal.ProgressBar"
                 visibleOrGone="@{!viewModel.isFailure &amp;&amp; viewModel.isLoadingData}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,10 +60,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/errorView"
                 visibleOrGone="@{viewModel.isFailure}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/generic_error_message"
+                android:textAppearance="?attr/errorTextAppearance"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

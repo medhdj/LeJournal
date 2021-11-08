@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
+import com.medhdj.core.platform.setVisibleOrGone
 import com.medhdj.core.platform.setupToolbar
 import com.medhdj.lejournal.databinding.FragmentArticlesFeedBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,9 +40,28 @@ class ArticlesFeedFragment : Fragment() {
             toolbar = binding.toolbar,
             showBack = false
         )
+        setupArticlesList()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun setupArticlesList() {
         binding.articlesList.adapter.onItemClickListener = {
             val action = ArticlesFeedFragmentDirections.actionGoToDetails(articleId = it.id)
             findNavController().navigate(action)
+        }
+
+        binding.articlesList.adapter.addLoadStateListener { loadState ->
+            val errorState =
+                loadState.source.refresh as? LoadState.Error
+                    ?: loadState.source.append as? LoadState.Error
+                    ?: loadState.source.prepend as? LoadState.Error
+                    ?: loadState.append as? LoadState.Error
+                    ?: loadState.prepend as? LoadState.Error
+            binding.errorView.setVisibleOrGone(errorState != null)
         }
     }
 }

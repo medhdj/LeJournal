@@ -68,7 +68,7 @@
                     android:layout_marginTop="@dimen/spacing_m"
                     android:paddingHorizontal="@dimen/spacing_s"
                     android:text="@{viewModel.articleDetailsData.headline}"
-                    android:textSize="@dimen/text_size_xl"
+                    android:textAppearance="?attr/textAppearanceHeadline1"
                     tools:text="This is a Headeline" />
 
                 <TextView
@@ -77,14 +77,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_m"
                     android:paddingHorizontal="@dimen/spacing_s"
-                    android:textSize="@dimen/text_size_m"
+                    android:textAppearance="?attr/textAppearanceBody1"
                     app:html="@{viewModel.articleDetailsData.body}"
                     tools:text="This is a body" />
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.core.widget.NestedScrollView>
 
         <ProgressBar
-            style="@style/LeJournal.ProgressBar"
+            style="@style/Styles.LeJournal.ProgressBar"
             visibleOrGone="@{!viewModel.isFailure &amp;&amp; viewModel.isLoadingData}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,6 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/generic_error_message"
+            android:textAppearance="?attr/errorTextAppearance"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

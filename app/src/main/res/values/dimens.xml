@@ -2,7 +2,7 @@
     <!-- Spacings -->
     <dimen name="spacing_none">0dp</dimen>
 
-    <dimen name="spacing_xxs">10dp</dimen>
+    <dimen name="spacing_xxs">5dp</dimen>
     <dimen name="spacing_xs">10dp</dimen>
     <dimen name="spacing_s">15dp</dimen>
     <dimen name="spacing_m">20dp</dimen>

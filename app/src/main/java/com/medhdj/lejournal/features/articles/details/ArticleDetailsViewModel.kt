@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.medhdj.business.articles.GetArticleDetailsUseCase
-import com.medhdj.core.extension.map
 import com.medhdj.core.extension.mapAndConvertToLiveDataInBackground
 import com.medhdj.core.extension.mapSuccess
 import com.medhdj.core.extension.plusAssign
@@ -29,9 +28,7 @@ class ArticleDetailsViewModel @Inject constructor(
 
     private val _articleDetailsData =
         MutableLiveData<Response<Throwable, ArticleUIModels.ArticleUIModel>>()
-    val articleDetailsData = _articleDetailsData.mapSuccess().map {
-        it
-    }
+    val articleDetailsData = _articleDetailsData.mapSuccess()
 
     private val articleId by lazy {
         state.get<String>(ARTICLE_ID)!!
@@ -44,7 +41,7 @@ class ArticleDetailsViewModel @Inject constructor(
     private fun fetchArticleDetails() {
         disposable += articleDetailsUseCase.getArticle(articleId = articleId)
             .mapAndConvertToLiveDataInBackground(
-                successHandler = {
+                dataMapper = {
                     it.toArticleUIModel()
                 },
                 errorHandler = {

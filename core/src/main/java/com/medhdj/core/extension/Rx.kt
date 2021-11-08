@@ -29,15 +29,22 @@ fun <T, ERROR, DATA> Single<T>.startWithLoadingFromWorkerThread(liveData: Mutabl
     }
 
 fun <T, ERROR, DATA> Flowable<T>.mapAndConvertToLiveDataInBackground(
-    successHandler: (T) -> DATA,
+    dataMapper: (T) -> DATA,
     errorHandler: (Throwable) -> ERROR,
-    liveData: MutableLiveData<Response<ERROR, DATA>>
+    liveData: MutableLiveData<Response<ERROR, DATA>>,
+    streamTransformer: ((Flowable<DATA>) -> Flowable<DATA>)? = null
 ): Disposable = this
     .runAndObserveInBackground()
     .startWithLoadingFromWorkerThread(liveData)
+    .map {
+        dataMapper(it)
+    }
+    .compose {
+        streamTransformer?.invoke(it) ?: it
+    }
     .subscribe(
         { data ->
-            liveData.postValue(Response.Success(successHandler(data)))
+            liveData.postValue(Response.Success(data))
         },
         { throwable ->
             liveData.postValue(Response.Failure(errorHandler(throwable)))
@@ -45,15 +52,18 @@ fun <T, ERROR, DATA> Flowable<T>.mapAndConvertToLiveDataInBackground(
     )
 
 fun <T, ERROR, DATA> Single<T>.mapAndConvertToLiveDataInBackground(
-    successHandler: (T) -> DATA,
+    dataMapper: (T) -> DATA,
     errorHandler: (Throwable) -> ERROR,
     liveData: MutableLiveData<Response<ERROR, DATA>>
 ): Disposable = this
     .runAndObserveInBackground()
     .startWithLoadingFromWorkerThread(liveData)
+    .map {
+        dataMapper(it)
+    }
     .subscribe(
         { data ->
-            liveData.postValue(Response.Success(successHandler(data)))
+            liveData.postValue(Response.Success(data))
         },
         { throwable ->
             liveData.postValue(Response.Failure(errorHandler(throwable)))

@@ -22,7 +22,7 @@ fun <T> LiveData<T>.filter(predicate: (T) -> Boolean): LiveData<T> {
     return mutableLiveData
 }
 
-fun <ERROR, DATA, Input : Response<ERROR, DATA>> LiveData<Input>.mapSuccess(): MutableLiveData<DATA> =
+fun <ERROR, DATA, Input : Response<ERROR, DATA>> LiveData<Input>.mapSuccess(): LiveData<DATA> =
     filter {
         it.isSuccess
     }.map {

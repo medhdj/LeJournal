@@ -38,9 +38,8 @@ class ArticlesFeedViewModel @Inject constructor(
 
     private fun fetchArticlesFeed() {
         disposable += articlesFeedUseCase.getArticles(withContent = STATIC_SEARCH_CONTENT)
-            .cachedIn(viewModelScope)
             .mapAndConvertToLiveDataInBackground(
-                successHandler = {
+                dataMapper = {
                     it.map { article ->
                         article.toArticleItemUIModel()
                     }.insertSectionHeaders()
@@ -49,7 +48,10 @@ class ArticlesFeedViewModel @Inject constructor(
                     Timber.e(it)
                     it
                 },
-                liveData = _articlesFeedData
+                liveData = _articlesFeedData,
+                streamTransformer = {
+                    it.cachedIn(viewModelScope)
+                }
             )
     }
 

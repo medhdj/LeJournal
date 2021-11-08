@@ -10,6 +10,8 @@ import androidx.paging.map
 import androidx.paging.rxjava2.cachedIn
 import com.medhdj.business.articles.GetArticlesFeedUseCase
 import com.medhdj.core.extension.mapAndConvertToLiveDataInBackground
+import com.medhdj.core.extension.mapIsFailure
+import com.medhdj.core.extension.mapIsLoading
 import com.medhdj.core.extension.mapSuccess
 import com.medhdj.core.extension.plusAssign
 import com.medhdj.core.functionnal.Response
@@ -31,6 +33,8 @@ class ArticlesFeedViewModel @Inject constructor(
     private val _articlesFeedData =
         MutableLiveData<Response<Throwable, PagingData<ArticleUIModels>>>()
     val articlesFeedData = _articlesFeedData.mapSuccess()
+    val isLoadingData = _articlesFeedData.mapIsLoading()
+    val isFailure = _articlesFeedData.mapIsFailure();
 
     init {
         fetchArticlesFeed()

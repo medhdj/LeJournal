@@ -2,11 +2,13 @@ package com.medhdj.core.platform
 
 import android.os.Build
 import android.text.Html
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY
 import androidx.databinding.BindingAdapter
 import com.medhdj.core.extension.setImage
+import com.medhdj.core.functionnal.Response
 
 @BindingAdapter("imageUrl")
 fun loadImage(imageView: ImageView, imageUrl: String?) {
@@ -22,5 +24,12 @@ fun renderHtml(textView: TextView, html: String?) {
             @Suppress("DEPRECATION")
             Html.fromHtml(it)
         }
+    }
+}
+
+@BindingAdapter("visibleOrGone")
+fun View.setVisibleOrGone(visible: Boolean?) {
+    visible?.let {
+        visibility = if (it) View.VISIBLE else View.GONE
     }
 }

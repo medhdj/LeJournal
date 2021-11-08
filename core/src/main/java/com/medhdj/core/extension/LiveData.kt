@@ -38,3 +38,9 @@ fun <ERROR, DATA, Input : Response<ERROR, DATA>> LiveData<Input>.mapError(): Liv
         @Suppress("UNCHECKED_CAST")
         (it as Response.Failure<ERROR>).error
     }
+
+fun <ERROR, DATA, Input : Response<ERROR, DATA>> LiveData<Input>.mapIsLoading(): LiveData<Boolean> =
+    map { it.isLoading }
+
+fun <ERROR, DATA, Input : Response<ERROR, DATA>> LiveData<Input>.mapIsFailure(): LiveData<Boolean> =
+    map { it.isFailure }

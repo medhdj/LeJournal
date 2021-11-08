@@ -4,5 +4,6 @@
     <string name="section_header_this_week">This week</string>
     <string name="section_header_last_week">Last week</string>
     <string name="section_header_older">Older articles</string>
+    <string name="generic_error_message">Sorry ! Something has gone wrong</string>
 
 </resources>

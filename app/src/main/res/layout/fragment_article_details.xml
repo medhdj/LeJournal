@@ -16,6 +16,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
+            visibleOrGone="@{!viewModel.isFailure &amp;&amp; !viewModel.isLoadingData}"
             android:layout_width="match_parent"
             android:layout_height="@dimen/article_details_appbar_height"
             android:theme="@style/Theme.LeJournal.AppBarOverlay">
@@ -49,6 +50,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
+            visibleOrGone="@{!viewModel.isFailure &amp;&amp; !viewModel.isLoadingData}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -80,6 +82,26 @@
                     tools:text="This is a body" />
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.core.widget.NestedScrollView>
+
+        <ProgressBar
+            style="@style/LeJournal.ProgressBar"
+            visibleOrGone="@{!viewModel.isFailure &amp;&amp; viewModel.isLoadingData}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <TextView
+            visibleOrGone="@{viewModel.isFailure}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/generic_error_message"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Tmp Error handling, better use some custom View" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

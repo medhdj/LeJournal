@@ -5,6 +5,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.medhdj.business.articles.GetArticleDetailsUseCase
 import com.medhdj.core.extension.mapAndConvertToLiveDataInBackground
+import com.medhdj.core.extension.mapIsFailure
+import com.medhdj.core.extension.mapIsLoading
 import com.medhdj.core.extension.mapSuccess
 import com.medhdj.core.extension.plusAssign
 import com.medhdj.core.functionnal.Response
@@ -29,6 +31,8 @@ class ArticleDetailsViewModel @Inject constructor(
     private val _articleDetailsData =
         MutableLiveData<Response<Throwable, ArticleUIModels.ArticleUIModel>>()
     val articleDetailsData = _articleDetailsData.mapSuccess()
+    val isLoadingData = _articleDetailsData.mapIsLoading()
+    val isFailure = _articleDetailsData.mapIsFailure();
 
     private val articleId by lazy {
         state.get<String>(ARTICLE_ID)!!

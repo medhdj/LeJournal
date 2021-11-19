@@ -31,7 +31,7 @@ android {
     buildTypes {
 
         debug {
-            buildConfigField "String", "THEGUARDIAN_API_KEY", '"' + getEnvironmentVariable("THEGUARDIAN_API_KEY", "a5656c07-7e6c-4711-8656-7028b0bbb846") + '"'
+            buildConfigField "String", "THEGUARDIAN_API_KEY", '"' + getEnvironmentVariable("THEGUARDIAN_API_KEY", "") + '"'
         }
 
         release {
